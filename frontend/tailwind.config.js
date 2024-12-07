@@ -5,15 +5,16 @@ export default {
     extend: {
       keyframes: {
         move: {
-          "0%": { transform: "translate(-50%, -50%)" },
+          "0%": { visibility: "hidden" },
           "100%": {
             transform:
               "translate(calc(-50% - var(--move-x)), calc(-50% - var(--move-y)))",
+            visibility: "visible",
           },
         },
       },
       animation: {
-        move: "move 1s ease-in-out forwards",
+        move: "move 1.3s ease-in-out 0.1s forwards",
       },
     },
   },
