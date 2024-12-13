@@ -14,7 +14,7 @@ export default {
         },
       },
       animation: {
-        move: "move 1.3s ease-in-out 0.1s forwards",
+        move: "move .8s ease-in-out 0.1s forwards",
       },
     },
   },

@@ -17,12 +17,14 @@ function Home() {
           radius={radius}
           country={"spain"}
           itemNumber={0}
+          language={"spanish"}
         />
         <FlagMenuOption
           languages={languages}
           radius={radius}
           country={"united-kingdom"}
           itemNumber={1}
+          language={"english"}
         />
       </nav>
     </div>
