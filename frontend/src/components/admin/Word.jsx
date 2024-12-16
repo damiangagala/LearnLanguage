@@ -8,8 +8,8 @@ function Word({ word, index, setIsEdited }) {
   const { words, setWords } = useContext(AdminContext);
 
   async function handleDelete() {
-    const test = await deleteItem("words", word.id);
-    if (test.statusText === "OK") {
+    const res = await deleteItem("words", word.id);
+    if (res.status === 200) {
       const newWordsList = [...words];
       newWordsList.splice(index, 1);
       setWords(newWordsList);

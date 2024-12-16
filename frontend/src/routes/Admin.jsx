@@ -6,9 +6,8 @@ import { AdminContext } from "../contexts/AdminProvider";
 function Admin() {
   const { setSearch, search, words, grammar } = useContext(AdminContext);
   return (
-    <div className="flex">
+    <div className="flex min-h-full border-4 border-red-900">
       <LanguageMenu />
-
       <div className="flex basis-full bg-gray-500 mt-72">
         <div className="basis-1/2">
           <input

@@ -31,8 +31,9 @@ export async function getAdminData(lang) {
 }
 
 export async function deleteItem(table, item) {
+  console.log(table, item);
   try {
-    return await api().delete(`/api/${table}/${item}`);
+    console.log(await api().delete(`/api/${table}/${item}`));
   } catch {
     throw new Error("Nie udało się usunąć zawartości");
   }
@@ -49,9 +50,9 @@ export async function editItem(data, id, table) {
 export async function login(creds) {
   await api().get("/sanctum/csrf-cookie");
   try {
-    await api().post("/api/login", creds);
-    return "success";
+    const res = await api().post("/api/login", creds);
+    return res.status;
   } catch (error) {
-    if (error.status === 422) throw new Error("Nieprawidłowe dane logowania");
+    if (error.status === 401) return { error: "Invalid credentials" };
   }
 }

@@ -9,10 +9,11 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        $request->session()->invalidate();
         $request->validate(
             [
-                'email'    => 'required|string',
-                'password' => 'required|string',
+                'email'    => 'required|email',
+                'password' => 'required',
             ]
         );
 
@@ -22,7 +23,7 @@ class LoginController extends Controller
             return response()->json([], 204);
         }
 
-        return response()->json(['error' => 'Invalid credentials']);
+        return response()->json(['error' => 'Invalid credentials'], 401);
     }
 
     public function logout(Request $request)
