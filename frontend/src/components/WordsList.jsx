@@ -4,10 +4,10 @@ function WordsList() {
   const { data } = useLoaderData();
 
   return (
-    <main className="mt-24 bg-[#F6F6F6] mx-auto w-3/4 lg:w-1/3 text-center ">
+    <main className="mt-24 bg-soft-white mx-auto w-3/4 lg:w-1/3 text-center ">
       <table className="text-center w-full ">
         <thead>
-          <tr className="bg-[#8785A2] text-zinc-50 ">
+          <tr className="bg-muted-lavender text-zinc-50 ">
             <th className="sm:text-4xl text-2xl font-semibold mb-5 py-4 rounded-tl-md">
               Słówko
             </th>
@@ -19,7 +19,7 @@ function WordsList() {
         <tbody>
           {data.map((word) => {
             return (
-              <tr key={word.id} className="odd:bg-[#E0E0E0]">
+              <tr key={word.id} className="odd:bg-light-gray">
                 <td className=" text-lg p-1">{word.word}</td>
                 <td className="text-lg p-2 ">{word.translation}</td>
               </tr>

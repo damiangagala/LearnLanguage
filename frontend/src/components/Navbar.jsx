@@ -17,14 +17,14 @@ function Navbar() {
   return (
     <nav className="flex gap-2 justify-center lg:justify-end">
       <div
-        className="bg-[#8785A2] rounded-md py-2 m-4 px-12 text-zinc-50 font-semibold text-2xl h-fit"
+        className="bg-muted-lavender rounded-md py-2 m-4 px-12 text-zinc-50 font-semibold text-2xl h-fit cursor-pointer"
         onClick={openModal}
       >
         Test
       </div>
       <WordsQuizModal ref={dialogRef} />
       <Link to={newPath}>
-        <div className="bg-[#8785A2] rounded-md py-2 m-4 px-12 text-zinc-50 font-semibold text-2xl h-fit">
+        <div className="bg-muted-lavender rounded-md py-2 m-4 px-12 text-zinc-50 font-semibold text-2xl h-fit">
           {location.includes("words") ? "Gramatyka" : "Słówka"}
         </div>
       </Link>
