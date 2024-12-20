@@ -9,13 +9,15 @@ function Words() {
   return (
     <>
       <Navbar />
-      {type === "words" ? (
-        <WordsList />
-      ) : type === "grammar" ? (
-        <GrammarList />
-      ) : (
-        "Page not Found"
-      )}
+      <main>
+        {type === "words" ? (
+          <WordsList />
+        ) : type === "grammar" ? (
+          <GrammarList />
+        ) : (
+          "Page not Found"
+        )}
+      </main>
     </>
   );
 }

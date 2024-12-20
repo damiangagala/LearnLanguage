@@ -4,7 +4,7 @@ function WordsList() {
   const { data } = useLoaderData();
 
   return (
-    <main className="mt-24 bg-soft-white mx-auto w-3/4 lg:w-1/3 text-center ">
+    <div className="mt-24 bg-soft-white mx-auto w-3/4 lg:w-1/3 text-center ">
       <table className="text-center w-full ">
         <thead>
           <tr className="bg-muted-lavender text-zinc-50 ">
@@ -27,7 +27,7 @@ function WordsList() {
           })}
         </tbody>
       </table>
-    </main>
+    </div>
   );
 }
 

@@ -17,7 +17,7 @@ function Word({ word, index, setIsEdited }) {
   }
 
   return (
-    <div className="flex">
+    <div className="flex ">
       <button onClick={() => setIsEdited(true)}>
         <i>
           <Pencil size={16} />

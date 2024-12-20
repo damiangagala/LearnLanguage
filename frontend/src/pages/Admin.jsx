@@ -6,16 +6,18 @@ import { AdminContext } from "../contexts/AdminProvider";
 function Admin() {
   const { setSearch, search, words, grammar } = useContext(AdminContext);
   return (
-    <div className="flex min-h-full border-4 border-red-900">
+    <div className="flex h-screen w-full">
       <LanguageMenu />
-      <div className="flex basis-full bg-gray-500 mt-72">
-        <div className="basis-1/2">
-          <input
-            className="border-2 border-black"
-            type="search"
-            name="wordSearch"
-            onChange={(e) => setSearch(e.target.value)}
-          />
+
+      <div className=" min-w-fit py-2 px-4 bg-blush-pink">
+        <input
+          className="border-2 border-black"
+          type="search"
+          name="wordSearch"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div></div>
+        <main>
           {words.length !== 0 &&
             words.map((word, index) => {
               return search === "" || word.word.includes(search) ? (
@@ -24,9 +26,7 @@ function Admin() {
                 ""
               );
             })}
-        </div>
-
-        <p className="basis-1/2">{grammar[0]?.name}</p>
+        </main>
       </div>
     </div>
   );

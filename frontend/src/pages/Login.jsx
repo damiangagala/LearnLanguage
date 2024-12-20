@@ -24,7 +24,7 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="text-center w-96 h-96 p-4 bg-muted-lavender rounded-xl">
+      <main className="text-center w-96 h-96 p-4 bg-muted-lavender rounded-xl">
         <h1 className="text-5xl m-8 text-soft-white font-bold">Zaloguj</h1>
         <form
           className="flex flex-col justify-between  p-2"
@@ -61,7 +61,7 @@ function Login() {
             Zaloguj
           </button>
         </form>
-      </div>
+      </main>
     </div>
   );
 }
