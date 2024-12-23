@@ -31,9 +31,8 @@ export async function getAdminData(lang) {
 }
 
 export async function deleteItem(table, item) {
-  console.log(table, item);
   try {
-    console.log(await api().delete(`/api/${table}/${item}`));
+    await api().delete(`/api/${table}/${item}`);
   } catch {
     throw new Error("Nie udało się usunąć zawartości");
   }
@@ -53,6 +52,25 @@ export async function login(creds) {
     const res = await api().post("/api/login", creds);
     return res.status;
   } catch (error) {
-    if (error.status === 401) return { error: "Invalid credentials" };
+    if (error.status === 401) return { error: "Nieprawidłowe dane logowania" };
+  }
+}
+
+export async function logout() {
+  try {
+    const res = await api().post("/api/logout");
+    console.log(res);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+export async function checkLogin() {
+  try {
+    const res = await api().get("/api/isAuth");
+
+    if (res.status === 200) return true;
+  } catch {
+    return false;
   }
 }

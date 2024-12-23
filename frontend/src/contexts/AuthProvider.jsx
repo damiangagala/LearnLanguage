@@ -1,9 +1,18 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { checkLogin } from "../util/api";
 
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState();
+
+  useEffect(() => {
+    async function checkAuth() {
+      const res = await checkLogin();
+      setIsAuthenticated(res);
+    }
+    checkAuth();
+  }, []);
 
   function contextLogin() {
     setIsAuthenticated(true);

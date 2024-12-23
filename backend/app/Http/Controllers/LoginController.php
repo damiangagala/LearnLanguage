@@ -23,15 +23,24 @@ class LoginController extends Controller
             return response()->json([], 204);
         }
 
-        return response()->json(['error' => 'Invalid credentials'], 401);
+        return response()->json(['error' => 'Nieprawidłowe dane logowania'], 401);
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session->invalidate();
-        $request->session->regenerateToken();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json([], 204);
+    }
+
+    public function checkAuth(Request $request)
+    {
+        if ($request->user('sanctum')) {
+            return response('auth', 200);
+        } else {
+            return response('guest', 400);
+        }
     }
 }

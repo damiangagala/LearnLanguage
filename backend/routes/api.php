@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('isAuth', [LoginController::class, 'checkAuth'])->middleware('auth:sanctum');
 
 Route::get('{language}/words', [WordsController::class, 'index']);
 Route::delete('words/{word}', [WordsController::class, 'destroy'])->middleware('auth:sanctum');

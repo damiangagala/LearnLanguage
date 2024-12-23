@@ -9,16 +9,21 @@ function Login() {
   const [error, setError] = useState("hidden");
   const { contextLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setIsDisabled(true);
+
     const res = await login(formData);
+
     if (res === 204) {
       contextLogin();
       navigate("/admin");
-    } else if (res.error === "Invalid credentials") {
+    } else if (res.error === "Nieprawidłowe dane logowania") {
       setError("");
       passwordRef.current.value = "";
+      setIsDisabled(false);
     }
   }
 
@@ -55,7 +60,10 @@ function Login() {
           />
 
           <button
-            className="border-2 border-black rounded-md m-2 mt-6 text-xl font-bold p-2 bg-soft-white"
+            className={`border-2 border-black rounded-md m-2 mt-6 text-xl font-bold p-2 ${
+              isDisabled ? "bg-gray-500" : "bg-soft-white"
+            }`}
+            disabled={isDisabled}
             type="submit"
           >
             Zaloguj

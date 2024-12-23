@@ -2,7 +2,7 @@ import { useState } from "react";
 import Word from "./Word";
 import WordEditForm from "./WordEditForm";
 
-function AdminWordsList({ word, index }) {
+function AdminWordsListItem({ word, index }) {
   const [isEdited, setIsEdited] = useState(false);
 
   return !isEdited ? (
@@ -12,4 +12,4 @@ function AdminWordsList({ word, index }) {
   );
 }
 
-export default AdminWordsList;
+export default AdminWordsListItem;
