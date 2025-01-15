@@ -1,13 +1,13 @@
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { login } from "../util/api";
-import { AuthContext } from "../contexts/AuthProvider";
+
 import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [formData, setformData] = useState({ email: "", password: "" });
   const passwordRef = useRef("");
   const [error, setError] = useState("hidden");
-  const { contextLogin } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -18,7 +18,6 @@ function Login() {
     const res = await login(formData);
 
     if (res === 204) {
-      contextLogin();
       navigate("/admin");
     } else if (res.error === "Nieprawidłowe dane logowania") {
       setError("");

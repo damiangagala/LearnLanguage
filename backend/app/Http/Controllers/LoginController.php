@@ -38,7 +38,7 @@ class LoginController extends Controller
     public function checkAuth(Request $request)
     {
         if ($request->user('sanctum')) {
-            return response('auth', 200);
+            return response('admin', 200);
         } else {
             return response('guest', 400);
         }

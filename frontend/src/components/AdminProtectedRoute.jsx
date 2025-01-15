@@ -1,15 +1,27 @@
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthProvider";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { checkLogin } from "../util/api";
 
-function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useContext(AuthContext);
+function AdminProtectedRoute({ children }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  if (!isAuthenticated) {
+  useEffect(() => {
+    const checkAuth = async () => {
+      const res = await checkLogin();
+      setIsAuthenticated(res);
+    };
+    checkAuth();
+  }, []);
+
+  if (isAuthenticated === null) {
+    return "loading";
+  }
+
+  if (isAuthenticated === false) {
     return <Navigate to="/login" replace />;
   }
 
   return children;
 }
 
-export default ProtectedRoute;
+export default AdminProtectedRoute;
